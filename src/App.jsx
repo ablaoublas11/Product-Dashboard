@@ -1,6 +1,80 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      name: "Laptop Pro 15",
+      category: "Electronics",
+      price: 1200,
+      status: "active",
+    },
+    {
+      id: 2,
+      name: "Office Chair",
+      category: "Furniture",
+      price: 180,
+      status: "active",
+    },
+    {
+      id: 3,
+      name: "Smartphone X",
+      category: "Electronics",
+      price: 850,
+      status: "inactive",
+    },
+    {
+      id: 4,
+      name: "Wooden Desk",
+      category: "Furniture",
+      price: 350,
+      status: "active",
+    },
+    {
+      id: 5,
+      name: "Wireless Headphones",
+      category: "Electronics",
+      price: 220,
+      status: "active",
+    },
+    {
+      id: 6,
+      name: 'LED Monitor 27"',
+      category: "Electronics",
+      price: 400,
+      status: "inactive",
+    },
+    {
+      id: 7,
+      name: "Bookshelf",
+      category: "Furniture",
+      price: 150,
+      status: "active",
+    },
+    {
+      id: 8,
+      name: "Coffee Machine",
+      category: "Appliances",
+      price: 300,
+      status: "active",
+    },
+    {
+      id: 9,
+      name: "Air Purifier",
+      category: "Appliances",
+      price: 270,
+      status: "inactive",
+    },
+    {
+      id: 10,
+      name: "Table Lamp",
+      category: "Furniture",
+      price: 60,
+      status: "active",
+    },
+  ]);
+
   return <></>;
 }
 
