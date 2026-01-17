@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 import "./App.css";
 
 function App() {
@@ -75,7 +77,14 @@ function App() {
     },
   ]);
 
-  return <></>;
+  return (
+    <div className="mainContainer">
+      <Header />
+      <div className="sideBar"></div>
+      <div className="dataContainer"></div>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
