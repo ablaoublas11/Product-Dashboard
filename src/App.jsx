@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import Preferences from "./Components/Preferences";
 import "./App.css";
 
 function App() {
@@ -80,7 +81,9 @@ function App() {
   return (
     <div className="mainContainer">
       <Header />
-      <div className="sideBar"></div>
+      <div className="sideBar">
+        <Preferences />
+      </div>
       <div className="dataContainer"></div>
       <Footer />
     </div>
