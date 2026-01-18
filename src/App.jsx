@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Preferences from "./Components/Preferences";
+import Filter from "./Components/Filter";
 import "./App.css";
 
 function App() {
@@ -83,6 +84,7 @@ function App() {
       <Header />
       <div className="sideBar">
         <Preferences />
+        <Filter />
       </div>
       <div className="dataContainer"></div>
       <Footer />

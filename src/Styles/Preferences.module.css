@@ -17,13 +17,7 @@
   font-weight: 600;
 }
 
-.themeSection {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
+.themeSection,
 .languageSection {
   display: flex;
   flex-direction: column;

@@ -65,6 +65,12 @@ body {
 
 .sideBar {
   grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
   /* εδώ θα μπει ο υπόλοιπος κώδικας για την διαμόρφωση του Layout */
 }
 .dataContainer {

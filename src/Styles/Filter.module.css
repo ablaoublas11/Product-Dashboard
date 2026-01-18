@@ -1,0 +1,31 @@
+.filterContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+  margin: 5px;
+  padding: 5px;
+  background-color: var(--card-background-color);
+  color: var(--profile-text-color);
+  border-radius: 5px;
+}
+
+.filterTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.filterSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.filterSelect {
+  width: 100%;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
