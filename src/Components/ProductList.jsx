@@ -11,10 +11,18 @@ export default function ProductList({ products }) {
         <div className={styles.header}>Status</div>
         {products.map((product) => (
           <div key={product.id} className={styles.productRow}>
-            <div className={styles.cell}>{product.name}</div>
-            <div className={styles.cell}>{product.category}</div>
-            <div className={styles.cell}>${product.price}</div>
-            <div className={styles.cell}>{product.status}</div>
+            <div className={styles.cell} data-label="Product: ">
+              {product.name}
+            </div>
+            <div className={styles.cell} data-label="Category: ">
+              {product.category}
+            </div>
+            <div className={styles.cell} data-label="Price: ">
+              {product.price}
+            </div>
+            <div className={styles.cell} data-label="Status: ">
+              {product.status}
+            </div>
           </div>
         ))}
       </div>
