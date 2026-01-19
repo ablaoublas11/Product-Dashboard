@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Preferences from "./Components/Preferences";
 import Filter from "./Components/Filter";
+import ProductList from "./Components/ProductList";
 import "./App.css";
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
     },
     {
       id: 5,
-      name: "Wireless Headphones",
+      name: "Headphones",
       category: "Electronics",
       price: 220,
       status: "active",
@@ -86,7 +87,9 @@ function App() {
         <Preferences />
         <Filter />
       </div>
-      <div className="dataContainer"></div>
+      <div className="dataContainer">
+        <ProductList products={products} />
+      </div>
       <Footer />
     </div>
   );

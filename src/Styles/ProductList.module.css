@@ -1,0 +1,86 @@
+.productListContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: var(--card-background-color);
+  color: var(--profile-text-color);
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  margin: 5px;
+  padding: 5px;
+}
+
+.productListContainer h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.header {
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.productRow {
+  display: contents;
+  width: 100%;
+}
+
+.cell {
+  padding: 10px;
+  text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .productListContainer {
+    box-sizing: border-box;
+  }
+
+  .productList {
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .productList {
+    grid-template-columns: 1fr; /* Μία στήλη μόνο (κάρτα) */
+    gap: 15px; /* Απόσταση μεταξύ των καρτών */
+  }
+
+  .header {
+    display: none; /* Απόκρυψη της κεφαλίδας σε κινητές συσκευές */
+  }
+
+  .cell {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .cell:nth-child(3n) {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .cell:before {
+    content: attr(data-label); /* Παίρνει το κείμενο από το HTML */
+    font-weight: bold;
+    color: #666;
+  }
+}

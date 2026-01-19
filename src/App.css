@@ -10,6 +10,7 @@
   --button-background-color: #45a15c;
   --button-hover-background-color: #3e8e4e;
   --button-text-color: #ffffff;
+  --border-color: #bebebe;
 }
 
 [data-theme="Dark"] {
@@ -52,7 +53,7 @@ body {
 
 .mainContainer {
   width: 50%;
-  height: 100%;
+  height: fit-content;
   display: grid;
   grid-template-columns: 3fr 7fr;
   grid-template-areas:
@@ -75,6 +76,12 @@ body {
 }
 .dataContainer {
   grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
   /* εδώ θα μπει ο υπόλοιπος κώδικας για την διαμόρφωση του Layout */
 }
 
