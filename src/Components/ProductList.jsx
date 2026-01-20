@@ -18,7 +18,7 @@ export default function ProductList({ products }) {
               {product.category}
             </div>
             <div className={styles.cell} data-label="Price: ">
-              {product.price}
+              {product.price}$
             </div>
             <div className={styles.cell} data-label="Status: ">
               {product.status}

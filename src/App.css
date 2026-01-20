@@ -52,7 +52,7 @@ body {
 }
 
 .mainContainer {
-  width: 50%;
+  width: 70%;
   height: fit-content;
   display: grid;
   grid-template-columns: 3fr 7fr;
@@ -67,9 +67,10 @@ body {
 .sideBar {
   grid-area: sidebar;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 5px;
   padding: 5px;
   /* εδώ θα μπει ο υπόλοιπος κώδικας για την διαμόρφωση του Layout */
@@ -102,5 +103,8 @@ body {
       "sidebar"
       "content"
       "footer";
+  }
+  .dataContainer {
+    max-width: 100%;
   }
 }

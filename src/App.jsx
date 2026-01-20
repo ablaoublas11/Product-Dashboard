@@ -4,6 +4,7 @@ import Footer from "./Components/Footer";
 import Preferences from "./Components/Preferences";
 import Filter from "./Components/Filter";
 import ProductList from "./Components/ProductList";
+import ProductDetails from "./Components/ProductDetails";
 import "./App.css";
 
 function App() {
@@ -89,6 +90,7 @@ function App() {
       </div>
       <div className="dataContainer">
         <ProductList products={products} />
+        <ProductDetails />
       </div>
       <Footer />
     </div>
