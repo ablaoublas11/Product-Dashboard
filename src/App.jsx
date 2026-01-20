@@ -8,6 +8,26 @@ import ProductDetails from "./Components/ProductDetails";
 import "./App.css";
 
 function App() {
+  // Αποθηκευω εδώ τους users για να τα περασω σαν props στο ProductList και όχι σε Context (γιατι δεν ειναι αναγκαιο να τα εχει ολη η εφαρμογη)
+  const [users, setUsers] = useState([
+    {
+      id: 1,
+      name: "John Doe",
+      email: "john@example.com",
+      role: "admin",
+      isLoggedIn: false,
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      email: "jane@example.com",
+      role: "user",
+      isLoggedIn: false,
+    },
+  ]);
+  // Εδώ κάνω την αλλαγή του isLoggedIn όταν πατιέται το κουμπί στο Header
+  const toogleLoggedIn = () => {};
+
   const [products, setProducts] = useState([
     {
       id: 1,
