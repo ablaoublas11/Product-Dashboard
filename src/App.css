@@ -75,6 +75,13 @@ body {
   padding: 5px;
   /* εδώ θα μπει ο υπόλοιπος κώδικας για την διαμόρφωση του Layout */
 }
+
+.preferencesBar,
+.filterBar {
+  width: 100%;
+  margin: 10px;
+}
+
 .dataContainer {
   grid-area: content;
   display: flex;
@@ -95,6 +102,10 @@ body {
   }
 }
 @media screen and (max-width: 768px) {
+  #root {
+    height: 100%;
+    place-items: top;
+  }
   .mainContainer {
     width: 100%;
     grid-template-columns: 1fr;

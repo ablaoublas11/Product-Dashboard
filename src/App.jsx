@@ -83,14 +83,28 @@ function App() {
     },
   ]);
 
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const handleSelectedCategory = (category) => {
+    setSelectedCategory(category);
+    // εδώ πρέπει να καλέσουμε και την μέθοδο φιλτραρίσματος των προϊόντων
+  };
+
   return (
     <AuthProvider>
       <div className="mainContainer">
         <Header />
         <PrefProvider>
           <div className="sideBar">
-            <Preferences />
-            <Filter />
+            <div className="preferencesBar">
+              <Preferences />
+            </div>
+            <div className="filterBar">
+              <Filter
+                products={products}
+                selectedCategory={selectedCategory}
+                handleSelectedCategory={handleSelectedCategory}
+              />
+            </div>
           </div>
         </PrefProvider>
         <div className="dataContainer">
