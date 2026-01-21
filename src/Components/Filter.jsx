@@ -12,10 +12,6 @@ export default function Filter({
       index === self.findIndex((t) => t.category === value.category),
   );
 
-  const changeTempCategory = (value) => {
-    setTempCategory(value);
-    // Implement category filtering logic here
-  };
   return (
     <div className={styles.filterContainer}>
       {isLoggedIn ? (

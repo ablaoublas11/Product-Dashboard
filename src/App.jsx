@@ -86,8 +86,12 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const handleSelectedCategory = (category) => {
     setSelectedCategory(category);
+    console.log(category);
     // εδώ πρέπει να καλέσουμε και την μέθοδο φιλτραρίσματος των προϊόντων
   };
+
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const filterProducts = (sCategory) => {};
 
   return (
     <AuthProvider>
