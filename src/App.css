@@ -13,7 +13,7 @@
   --border-color: #bebebe;
 }
 
-[data-theme="Dark"] {
+[data-theme="dark"] {
   --header-color: #11276d;
   --text-color: #e0e0e0;
   --profile-text-color: #d5d5d5;

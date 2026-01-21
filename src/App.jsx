@@ -5,29 +5,11 @@ import Preferences from "./Components/Preferences";
 import Filter from "./Components/Filter";
 import ProductList from "./Components/ProductList";
 import ProductDetails from "./Components/ProductDetails";
+import { PrefProvider } from "./Context/PrefContext";
+import { AuthProvider } from "./Context/AuthContext";
 import "./App.css";
 
 function App() {
-  // Αποθηκευω εδώ τους users για να τα περασω σαν props στο ProductList και όχι σε Context (γιατι δεν ειναι αναγκαιο να τα εχει ολη η εφαρμογη)
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      email: "john@example.com",
-      role: "admin",
-      isLoggedIn: false,
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane@example.com",
-      role: "user",
-      isLoggedIn: false,
-    },
-  ]);
-  // Εδώ κάνω την αλλαγή του isLoggedIn όταν πατιέται το κουμπί στο Header
-  const toogleLoggedIn = () => {};
-
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -102,18 +84,22 @@ function App() {
   ]);
 
   return (
-    <div className="mainContainer">
-      <Header />
-      <div className="sideBar">
-        <Preferences />
-        <Filter />
+    <AuthProvider>
+      <div className="mainContainer">
+        <Header />
+        <PrefProvider>
+          <div className="sideBar">
+            <Preferences />
+            <Filter />
+          </div>
+        </PrefProvider>
+        <div className="dataContainer">
+          <ProductList products={products} />
+          <ProductDetails />
+        </div>
+        <Footer />
       </div>
-      <div className="dataContainer">
-        <ProductList products={products} />
-        <ProductDetails />
-      </div>
-      <Footer />
-    </div>
+    </AuthProvider>
   );
 }
 
