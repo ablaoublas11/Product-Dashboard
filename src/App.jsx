@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Preferences from "./Components/Preferences";
@@ -84,14 +84,46 @@ function App() {
   ]);
 
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
   const handleSelectedCategory = (category) => {
     setSelectedCategory(category);
-    console.log(category);
+    filterProducts(category, selectedStatus);
+    //console.log(category);
     // εδώ πρέπει να καλέσουμε και την μέθοδο φιλτραρίσματος των προϊόντων
   };
 
+  const handleSelectedStatus = (status) => {
+    setSelectedStatus(status);
+    filterProducts(selectedCategory, status);
+  };
+
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const filterProducts = (sCategory) => {};
+  const filterProducts = (sCategory, sStatus) => {
+    const categoryLower = (sCategory || "").toLowerCase().trim();
+    const statusLower = (sStatus || "").toLowerCase().trim();
+
+    const filtered = products.filter((product) => {
+      // εάν είναι κενή η επιλογή category τότε πάρε όλα τα προϊόντα, αλλιώς δες εάν συμπεριλαμβάνονται στην λίστα
+      const passesCategory =
+        !categoryLower ||
+        categoryLower === "all" ||
+        product.category.toLowerCase() === categoryLower;
+      // εάν είναι κενή η επιλογή status τότε πάρε όλα τα προϊόντα, αλλιώς δες εάν συμπεριλαμβάνονται στην λίστα
+      const passesStatus =
+        !statusLower ||
+        statusLower === "all" ||
+        product.status.toLowerCase() === statusLower;
+
+      return passesCategory && passesStatus;
+    });
+    setFilteredProducts(filtered);
+  };
+
+  const [flagClearFilter, setFlagClearFilter] = useState(false);
+  const clearFilter = () => {
+    setFilteredProducts(products);
+    setSelectedCategory("");
+  };
 
   return (
     <AuthProvider>
@@ -107,12 +139,14 @@ function App() {
                 products={products}
                 selectedCategory={selectedCategory}
                 handleSelectedCategory={handleSelectedCategory}
+                selectedSatus={selectedStatus}
+                handleSelectedStatus={handleSelectedStatus}
               />
             </div>
           </div>
         </PrefProvider>
         <div className="dataContainer">
-          <ProductList products={products} />
+          <ProductList products={filteredProducts} />
           <ProductDetails />
         </div>
         <Footer />

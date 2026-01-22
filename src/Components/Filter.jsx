@@ -1,16 +1,38 @@
 import styles from "../Styles/Filter.module.css";
 import { useAuth } from "../Context/AuthContext";
 
-export default function Filter({
-  products,
-  selectedCategory,
-  handleSelectedCategory,
-}) {
+export default function Filter({ products, ...props }) {
   const { isLoggedIn } = useAuth();
+  // Δημιουργία μοναδικών κατηγοριών και καταστάσεων από τα προϊόντα
   const tempCategory = products.filter(
+    //το value είναι το τρέχον αντικείμενο, το index η τρέχουσα θέση και το self ολόκληρος ο πίνακας
     (value, index, self) =>
+      //ελέγχει εάν η τρέχουσα θέση είναι η πρώτη εμφάνιση της συγκεκριμένης κατηγορίας
       index === self.findIndex((t) => t.category === value.category),
   );
+
+  const tempStatus = products.filter(
+    (value, index, self) =>
+      index === self.findIndex((t) => t.status === value.status),
+  );
+
+  //μέθοδος για την εμφάνιση των options των φίλτρων κατηγορίας και κατάστασης
+  //επαναχρησιμοποίηση και για τα δύο φίλτρα
+  const renderOptions = (data, valueKey, labelKey) => {
+    //data είναι ο πίνακας με τα αντικείμενα που θέλουμε να εμφανίσουμε ως επιλογές
+    //valueKey είναι το κλειδί που θα χρησιμοποιηθεί για την τιμή της επιλογής
+    //labelKey είναι το κλειδί που θα χρησιμοποιηθεί για την ετικέτα της επιλογής
+    return (
+      <>
+        <option value="all">All</option>
+        {data.map((item) => (
+          <option key={item.id} value={item[valueKey]}>
+            {item[labelKey]}
+          </option>
+        ))}
+      </>
+    );
+  };
 
   return (
     <div className={styles.filterContainer}>
@@ -23,23 +45,22 @@ export default function Filter({
               className={styles.filterSelect}
               name="category"
               id="categories"
-              onChange={(e) => handleSelectedCategory(e.target.value)}
-              value={selectedCategory}
+              onChange={(e) => props.handleSelectedCategory(e.target.value)}
+              value={props.selectedCategory}
             >
-              <option value="all">All</option>
-              {tempCategory.map((categoryObj) => (
-                <option key={categoryObj.id} value={categoryObj.category}>
-                  {categoryObj.category}
-                </option>
-              ))}
+              {renderOptions(tempCategory, "category", "category")}
             </select>
           </div>
           <div className={styles.filterSection}>
             <label className={styles.filterLabel}>Status</label>
-            <select className={styles.filterSelect}>
-              <option value="all">All</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+            <select
+              className={styles.filterSelect}
+              name="sttus"
+              id="status"
+              value={props.selectedSatus}
+              onChange={(e) => props.handleSelectedStatus(e.target.value)}
+            >
+              {renderOptions(tempStatus, "status", "status")}
             </select>
           </div>
         </>
