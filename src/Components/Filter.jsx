@@ -55,9 +55,9 @@ export default function Filter({ products, ...props }) {
             <label className={styles.filterLabel}>Status</label>
             <select
               className={styles.filterSelect}
-              name="sttus"
+              name="status"
               id="status"
-              value={props.selectedSatus}
+              value={props.selectedStatus}
               onChange={(e) => props.handleSelectedStatus(e.target.value)}
             >
               {renderOptions(tempStatus, "status", "status")}

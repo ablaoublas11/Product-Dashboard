@@ -88,6 +88,7 @@ function App() {
   const handleSelectedCategory = (category) => {
     setSelectedCategory(category);
     filterProducts(category, selectedStatus);
+    handleFlagClearFilter();
     //console.log(category);
     // εδώ πρέπει να καλέσουμε και την μέθοδο φιλτραρίσματος των προϊόντων
   };
@@ -95,6 +96,7 @@ function App() {
   const handleSelectedStatus = (status) => {
     setSelectedStatus(status);
     filterProducts(selectedCategory, status);
+    handleFlagClearFilter();
   };
 
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -120,9 +122,13 @@ function App() {
   };
 
   const [flagClearFilter, setFlagClearFilter] = useState(false);
+  const handleFlagClearFilter = () => {
+    setFlagClearFilter(true);
+  };
   const clearFilter = () => {
     setFilteredProducts(products);
     setSelectedCategory("");
+    setFlagClearFilter(false);
   };
 
   return (
@@ -139,9 +145,17 @@ function App() {
                 products={products}
                 selectedCategory={selectedCategory}
                 handleSelectedCategory={handleSelectedCategory}
-                selectedSatus={selectedStatus}
+                selectedStatus={selectedStatus}
                 handleSelectedStatus={handleSelectedStatus}
               />
+            </div>
+            <div className="clearButtonContainer">
+              <button
+                className={`clearFilterButton ${flagClearFilter ? "active" : "inactive"}`}
+                onClick={clearFilter}
+              >
+                Clear Filters
+              </button>
             </div>
           </div>
         </PrefProvider>

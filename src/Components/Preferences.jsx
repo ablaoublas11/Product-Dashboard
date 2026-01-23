@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAuth } from "../Context/AuthContext";
 import { usePref } from "../Context/PrefContext";
 
-export default function Preferences() {
+export default function Preferences({ flagClearFilter }) {
   const { isLoggedIn } = useAuth();
   const { theme, toggleTheme, language, changeLanguage } = usePref();
 

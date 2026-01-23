@@ -73,13 +73,38 @@ body {
   align-items: flex-start;
   margin: 5px;
   padding: 5px;
+  box-sizing: border-box;
   /* εδώ θα μπει ο υπόλοιπος κώδικας για την διαμόρφωση του Layout */
 }
 
 .preferencesBar,
-.filterBar {
+.filterBar,
+.clearButtonContainer {
+  display: contents;
   width: 100%;
   margin: 10px;
+}
+
+.clearFilterButton {
+  width: fit-content;
+  padding: 10px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.clearFilterButton:hover {
+  background-color: var(--button-hover-background-color);
+}
+
+.active {
+  display: inline-block;
+}
+.inactive {
+  display: none;
 }
 
 .dataContainer {
