@@ -127,6 +127,10 @@ function App() {
   const handleFlagClearFilter = () => {
     setFlagClearFilter(true);
   };
+
+  const handleEditProducts = () => {};
+  const handleSaveProducts = () => {};
+
   const clearFilter = () => {
     setFilteredProducts(products);
     setSelectedCategory("");
