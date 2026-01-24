@@ -82,7 +82,7 @@ function App() {
       status: "active",
     },
   ]);
-
+  // μέθοδος για την διαχείρηση της επιλογή του category από το dropdown
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const handleSelectedCategory = (category) => {
@@ -92,12 +92,14 @@ function App() {
     //console.log(category);
     // εδώ πρέπει να καλέσουμε και την μέθοδο φιλτραρίσματος των προϊόντων
   };
-
+  // μέθοδος για την διαχείρηση της επιλογή του status από το dropdown
   const handleSelectedStatus = (status) => {
     setSelectedStatus(status);
     filterProducts(selectedCategory, status);
     handleFlagClearFilter();
   };
+  // μεταβλητή για την αποθήκευση των επιλεγμένων προϊόντων
+  const [selectedProducts, setSelectedProducts] = useState([]);
 
   const [filteredProducts, setFilteredProducts] = useState(products);
   const filterProducts = (sCategory, sStatus) => {
@@ -129,6 +131,7 @@ function App() {
     setFilteredProducts(products);
     setSelectedCategory("");
     setFlagClearFilter(false);
+    setSelectedProducts([]);
   };
 
   return (
@@ -160,8 +163,12 @@ function App() {
           </div>
         </PrefProvider>
         <div className="dataContainer">
-          <ProductList products={filteredProducts} />
-          <ProductDetails />
+          <ProductList
+            products={filteredProducts}
+            selectedProducts={selectedProducts}
+            setSelectedProducts={setSelectedProducts}
+          />
+          <ProductDetails selectedProducts={selectedProducts} />
         </div>
         <Footer />
       </div>

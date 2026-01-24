@@ -1,7 +1,11 @@
 import styles from "../Styles/ProductList.module.css";
 import { useAuth } from "../Context/AuthContext";
 
-export default function ProductList({ products }) {
+export default function ProductList({
+  products,
+  selectedProducts,
+  setSelectedProducts,
+}) {
   const { isLoggedIn } = useAuth();
   return (
     <div className={styles.productListContainer}>
@@ -9,12 +13,21 @@ export default function ProductList({ products }) {
         <>
           <h2>Product List</h2>
           <div className={styles.productList}>
+            <div className={styles.header}>Select</div>
             <div className={styles.header}>Product</div>
             <div className={styles.header}>Category</div>
             <div className={styles.header}>Price</div>
             <div className={styles.header}>Status</div>
+
             {products.map((product) => (
               <div key={product.id} className={styles.productRow}>
+                <div className={styles.cell} data-label="Select: ">
+                  <input
+                    type="checkbox"
+                    checked={selectedProducts.id === product.id}
+                    onChange={() => setSelectedProducts(product)}
+                  />
+                </div>
                 <div className={styles.cell} data-label="Product: ">
                   {product.name}
                 </div>

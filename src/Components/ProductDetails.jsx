@@ -1,6 +1,6 @@
 import styles from "../Styles/ProductDetails.module.css";
 
-export default function ProductDetails() {
+export default function ProductDetails({ selectedProducts }) {
   return (
     <div className={styles.detailsContainer}>
       <h2>Product Details</h2>
