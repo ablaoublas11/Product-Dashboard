@@ -128,7 +128,9 @@ function App() {
     setFlagClearFilter(true);
   };
 
-  const handleEditProducts = () => {};
+  const handleEditProducts = (id, field, value) => {
+    setSelectedProducts((prev) => ({ ...prev, [field]: value }));
+  };
   const handleSaveProducts = () => {};
 
   const clearFilter = () => {
@@ -172,7 +174,11 @@ function App() {
             selectedProducts={selectedProducts}
             setSelectedProducts={setSelectedProducts}
           />
-          <ProductDetails selectedProducts={selectedProducts} />
+          <ProductDetails
+            selectedProducts={selectedProducts}
+            handleEditProducts={handleEditProducts}
+            handleSaveProducts={handleSaveProducts}
+          />
         </div>
         <Footer />
       </div>

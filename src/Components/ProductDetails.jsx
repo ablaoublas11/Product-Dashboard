@@ -1,6 +1,16 @@
 import styles from "../Styles/ProductDetails.module.css";
+import { useState } from "react";
+export default function ProductDetails({
+  selectedProducts,
+  handleEditProducts,
+  handleSaveProducts,
+}) {
+  const [isEditing, setIsEditing] = useState(false);
 
-export default function ProductDetails({ selectedProducts }) {
+  const toggleIsEditing = () => {
+    setIsEditing((prev) => !prev);
+  };
+
   return (
     <div className={styles.detailsContainer}>
       <h2>Product Details</h2>
@@ -8,11 +18,54 @@ export default function ProductDetails({ selectedProducts }) {
         {selectedProducts && Object.keys(selectedProducts).length > 0 ? (
           <>
             <div className={styles.informations}>
-              <p>Name: {selectedProducts.name}</p>
-              <p>Price: {selectedProducts.price}$</p>
+              {isEditing ? (
+                <>
+                  <input
+                    type="text"
+                    id="name-text"
+                    value={selectedProducts.name}
+                    placeholder="Enter Name"
+                    className={styles.productDetails}
+                    onChange={(e) =>
+                      handleEditProducts(
+                        selectedProducts.id,
+                        "name",
+                        e.target.value,
+                      )
+                    }
+                  />
+                  <input
+                    type="text"
+                    id="price-text"
+                    value={selectedProducts.price}
+                    placeholder="Enter Price"
+                    className={styles.productDetails}
+                    onChange={(e) =>
+                      handleEditProducts(
+                        selectedProducts.id,
+                        "price",
+                        e.target.value,
+                      )
+                    }
+                  />
+                </>
+              ) : (
+                <>
+                  <p className={styles.productDetails}>
+                    Name: {selectedProducts.name}
+                  </p>
+                  <p className={styles.productDetails}>
+                    Price: {selectedProducts.price}$
+                  </p>
+                </>
+              )}
             </div>
             <div className={styles.actions}>
-              <button>Edit</button>
+              {!isEditing ? (
+                <button onClick={toggleIsEditing}>Edit</button>
+              ) : (
+                <button onClick={toggleIsEditing}>Save</button>
+              )}
               <button>Toogle Status</button>
             </div>
           </>
