@@ -128,8 +128,15 @@ function App() {
     setFlagClearFilter(true);
   };
 
+  //Μέθοδος για την τροποποίηση και αποθήκευση των εγγραφών στην λίστα προϊόντων
   const handleEditProducts = (id, field, value) => {
     setSelectedProducts((prev) => ({ ...prev, [field]: value }));
+    setProducts((prev) =>
+      prev.map((pro) => (pro.id === id ? { ...pro, [field]: value } : pro)),
+    );
+    setFilteredProducts((prev) =>
+      prev.map((pro) => (pro.id === id ? { ...pro, [field]: value } : pro)),
+    );
   };
   const handleSaveProducts = () => {};
 
