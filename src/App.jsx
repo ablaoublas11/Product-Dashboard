@@ -138,7 +138,16 @@ function App() {
       prev.map((pro) => (pro.id === id ? { ...pro, [field]: value } : pro)),
     );
   };
-  const handleSaveProducts = () => {};
+  
+  const handleToggleStatus = (id) => {
+    console.log("toggle status");
+    setSelectedProducts(
+      (prev) => ({...prev, status: !prev.status})
+    );
+    setProducts((prev) =>
+      prev.map((pro) => (pro.id === id ? { ...pro, status: !prev.status} : pro)),
+    );
+  };
 
   const clearFilter = () => {
     setFilteredProducts(products);
@@ -184,7 +193,7 @@ function App() {
           <ProductDetails
             selectedProducts={selectedProducts}
             handleEditProducts={handleEditProducts}
-            handleSaveProducts={handleSaveProducts}
+            handleToggleStatus={handleToggleStatus}
           />
         </div>
         <Footer />

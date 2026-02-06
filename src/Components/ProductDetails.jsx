@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function ProductDetails({
   selectedProducts,
   handleEditProducts,
-  handleSaveProducts,
+  handleToggleStatus,
 }) {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -66,7 +66,7 @@ export default function ProductDetails({
               ) : (
                 <button onClick={toggleIsEditing}>Save</button>
               )}
-              <button>Toogle Status</button>
+              <button onClick={() => handleToggleStatus(selectedProducts.id)}>Toogle Status</button>
             </div>
           </>
         ) : (
