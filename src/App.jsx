@@ -140,12 +140,15 @@ function App() {
   };
   
   const handleToggleStatus = (id) => {
-    console.log("toggle status");
+    console.log("toggle status ");
     setSelectedProducts(
-      (prev) => ({...prev, status: !prev.status})
+      (prev) => ({...prev, status: prev.status === "active" ? "inactive" : "active"})
     );
     setProducts((prev) =>
-      prev.map((pro) => (pro.id === id ? { ...pro, status: !prev.status} : pro)),
+      prev.map((pro) => (pro.id === id ? { ...pro, status: pro.status === "active" ? "inactive" : "active"} : pro)),
+    );
+    setFilteredProducts((prev) =>
+      prev.map((pro) => (pro.id === id ? { ...pro, status: pro.status === "active" ? "inactive" : "active"} : pro)),
     );
   };
 
